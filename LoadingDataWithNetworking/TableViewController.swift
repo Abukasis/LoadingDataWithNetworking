@@ -13,6 +13,7 @@ class TableViewController: UITableViewController {
     var ArtistNameList = [String]()
     var AlbumPictureList = [UIImage]()
     var AlbumTitleList = [String]()
+
     
     
     func getData(){
@@ -30,17 +31,21 @@ class TableViewController: UITableViewController {
                 let data = item as! NSDictionary
                 let artistName = data["artistName"]  as! String
                 let albumName = data["name"]  as! String
-                let albumPhotoURL =  data["artworkUrl100"] as! URL
+                let albumPhotoURL =  data["artworkUrl100"] as! String
                 
-                let pictureData = try? Data(contentsOf: albumPhotoURL ) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+                let pictureData = try? Data(contentsOf: URL(string:albumPhotoURL )! )//make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
                 let albumPhoto = UIImage(data: pictureData!)
-                
+                print(artistName)
                 self.ArtistNameList.append(artistName)
                 self.AlbumTitleList.append(albumName)
                 
                 self.AlbumPictureList.append(albumPhoto!)
                 
             }
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+            
             
             
             // delectus aut autem
@@ -57,7 +62,7 @@ class TableViewController: UITableViewController {
         getData()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
+        
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
@@ -66,23 +71,34 @@ class TableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        if(self.AlbumTitleList.count > 0){
+            return self.AlbumTitleList.count
+        }else{
+            return 1
+        }
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = UITableViewCell.init(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: nil)
+        if(AlbumTitleList.count > 0){
+        cell.imageView?.image = AlbumPictureList[indexPath.row]
+        cell.textLabel?.text = AlbumTitleList[indexPath.row]
+        cell.detailTextLabel?.text = ArtistNameList[indexPath.row]
+        } else{
+            cell.textLabel?.text = "Loading Data"
+        }
 
         // Configure the cell...
 
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
