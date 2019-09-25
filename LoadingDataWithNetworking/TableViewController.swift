@@ -10,12 +10,41 @@ import UIKit
 
 class TableViewController: UITableViewController {
     
+    var ArtistNameList = [String]()
+    var AlbumPictureList = [UIImage]()
+    var AlbumTitleList = [String]()
+    
+    
     func getData(){
         let url = URL(string: "https://rss.itunes.apple.com/api/v1/us/apple-music/coming-soon/all/10/explicit.json")!
         
         let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
             guard let data = data else { return }
-            print(String(data: data, encoding: .utf8)!)
+            let feed = try? JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary
+            
+            var results = feed!["feed"] as? NSDictionary
+            var insideResults = results!["results"] as? NSArray
+            
+        
+            for item in insideResults!{
+                let data = item as! NSDictionary
+                let artistName = data["artistName"]  as! String
+                let albumName = data["name"]  as! String
+                let albumPhotoURL =  data["artworkUrl100"] as! URL
+                
+                let pictureData = try? Data(contentsOf: albumPhotoURL ) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+                let albumPhoto = UIImage(data: pictureData!)
+                
+                self.ArtistNameList.append(artistName)
+                self.AlbumTitleList.append(albumName)
+                
+                self.AlbumPictureList.append(albumPhoto!)
+                
+            }
+            
+            
+            // delectus aut autem
+         
         }
         
         task.resume()
