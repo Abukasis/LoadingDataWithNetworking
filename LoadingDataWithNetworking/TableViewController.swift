@@ -10,9 +10,14 @@ import UIKit
 
 class TableViewController: UITableViewController {
     
+    /* Now that I know how to model a structure for data, if i were to continue working on this, i could make a class
+        named media which holds one of each of the data items i need to store, and provide an object orientated solution where i have a list of these custom objects. Much easier to manage!
+    */
     var ArtistNameList = [String]()
     var AlbumPictureList = [UIImage]()
     var AlbumTitleList = [String]()
+    
+    
 
     
     
