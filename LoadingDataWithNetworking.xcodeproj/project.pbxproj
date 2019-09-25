@@ -13,6 +13,7 @@
 		8476F794233B2AF800BED880 /* LoadingDataWithNetworking.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8476F792233B2AF800BED880 /* LoadingDataWithNetworking.xcdatamodeld */; };
 		8476F796233B2AFB00BED880 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8476F795233B2AFB00BED880 /* Assets.xcassets */; };
 		8476F799233B2AFB00BED880 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8476F797233B2AFB00BED880 /* LaunchScreen.storyboard */; };
+		8476F7A1233B2CB600BED880 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8476F7A0233B2CB600BED880 /* TableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		8476F795233B2AFB00BED880 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8476F798233B2AFB00BED880 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8476F79A233B2AFB00BED880 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8476F7A0233B2CB600BED880 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				8476F78B233B2AF700BED880 /* AppDelegate.swift */,
 				8476F78D233B2AF700BED880 /* ViewController.swift */,
 				8476F78F233B2AF800BED880 /* Main.storyboard */,
+				8476F7A0233B2CB600BED880 /* TableViewController.swift */,
 				8476F795233B2AFB00BED880 /* Assets.xcassets */,
 				8476F797233B2AFB00BED880 /* LaunchScreen.storyboard */,
 				8476F79A233B2AFB00BED880 /* Info.plist */,
@@ -141,6 +144,7 @@
 				8476F78E233B2AF700BED880 /* ViewController.swift in Sources */,
 				8476F794233B2AF800BED880 /* LoadingDataWithNetworking.xcdatamodeld in Sources */,
 				8476F78C233B2AF700BED880 /* AppDelegate.swift in Sources */,
+				8476F7A1233B2CB600BED880 /* TableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
